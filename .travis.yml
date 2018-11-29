@@ -7,9 +7,9 @@ dist: trusty
 sudo: false
 
 script:
-  - npm install -g json-minify valid-json-cli
-  - validjson json/institutions.json
-  - validjson json/regions.js
+  - npm install -g json-minify jsonlint-cli
+  - jsonlint-cli json/institutions.json
+  - jsonlint-cli json/regions.js
   - cat json/institutions.json | json-minify > compiled/institutions.json
   - cat json/regions.json | json-minify > compiled/regions.json
 
