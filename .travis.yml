@@ -1,0 +1,24 @@
+language: node_js
+
+node_js: "10.14.1"
+
+dist: trusty
+
+sudo: false
+
+script:
+  - npm install -g json-minify valid-json-cli
+  - validjson json/institutions.json
+  - validjson json/regions.js
+  - cat json/institutions.json | json-minify > compiled/institutions.json
+  - cat json/regions.json | json-minify > compiled/regions.json
+
+deploy:
+  on:
+    tags: true
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file:
+    - compiled/institutions.json
+    - compiled/regions.json
+  skip_cleanup: true
