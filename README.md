@@ -31,7 +31,7 @@ It's even more useful when using it in forms. Here's an example using blade synt
 ```
 <select name="region">
   @foreach ($regions as $regionName => $cities)
-    <option name="{{ $regionName }}">{{ $regionName }}</option>
+    <option value="{{ $regionName }}">{{ $regionName }}</option>
   @endforeach
 </select>
 ```
